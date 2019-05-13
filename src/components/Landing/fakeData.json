@@ -1,0 +1,158 @@
+{
+  "items" : [ 
+    {
+    "id" : 1,
+    "img" : "https://images.amain.com/images/large/bikes/fuji/1182750217.jpg?width=475",
+    "price" : "$1,199.99",
+    "title" : "DIAMONDBACK OVERDRIVE CARBON PRO 29",
+    "info" : {
+      "img" : ["https://images.amain.com/images/large/bikes/fuji/1182750217.jpg?width=475", "https://images.amain.com/images/large/bikes/radio/01005160118.jpg?width=475", "https://images.amain.com/images/large/bikes/radio/01005160218.jpg?width=475"],
+      "price" : "$1,199.99",
+      "title" : "DIAMONDBACK OVERDRIVE CARBON PRO 29",
+      "description" : "Setting a user ID is never required for Analytics to work correctly. If you're only interested in finding events belonging to the same user for the same app on a single device, you can use the "
+    }
+  }, {
+    "id" : 2,
+    "img" : "https://images.amain.com/images/large/bikes/radio/01005160118.jpg?width=475",
+    "price" : "$1,499.99",
+    "title" : "NINER RLT9 RDO ULTEGRA R8000 JENSON BIKE",
+    "info": {
+      "img" : ["https://images.amain.com/images/large/bikes/radio/01005160118.jpg?width=475", "https://images.amain.com/images/large/bikes/fuji/1182750217.jpg?width=475"],
+      "price" : "$1,499.99",
+      "title" : "NINER RLT9 RDO ULTEGRA R8000 JENSON BIKE",
+      "description" : "There are many ways you can construct valid user IDs. One approach is to use an identifier you assign and only you can track back to an individual user. For one possible example, consider a hypothetical mobile game developer, AwesomeGameCompany, that has their own interna"
+    }
+  }, {
+    "id" : 3,
+    "img" : "https://images.amain.com/images/large/bikes/radio/01005160218.jpg?width=475",
+    "price" : "$1,199.99",
+    "title" : "KONA JAKE THE SNAKE BIKE 2018",
+    "info" : {
+      "img" : ["https://images.amain.com/images/large/bikes/radio/01005160218.jpg?width=475", "https://images.amain.com/images/large/bikes/fuji/1483215455.jpg?width=475"],
+      "price" : "$1,199.99",
+      "title" : "KONA JAKE THE SNAKE BIKE 2018",
+      "description" : "This call is optional, and is generally used by organizations that want to use Analytics in conjunction with BigQuery to associate analytics data for the same user across multiple apps, multiple devices, or multiple analytics providers."
+    }
+  }, {
+    "id" : 4,
+    "img" : "https://images.amain.com/images/large/bikes/fuji/1483215455.jpg?width=475",
+    "price" : "$999.99",
+    "title" : "KONA UNIT X BIKE 2018",
+    "info" : {
+      "img" : ["https://images.amain.com/images/large/bikes/fuji/1483215455.jpg?width=475", "https://images.amain.com/images/large/bikes/fuji/1181454752.jpg?width=475", "https://images.amain.com/images/large/bikes/fuji/1182750217.jpg?width=475"],
+      "price" : "$999.99",
+      "title" : "KONA UNIT X BIKE 2018",
+      "description" : "Google Analytics for Firebase has a setUserID call, which allows you to store a user ID for the individual using your app. "
+    }
+  }, {
+    "id" : 5,
+    "img" : "https://images.amain.com/images/large/bikes/fuji/1181454752.jpg?width=475",
+    "price" : "$1,249.99",
+    "title" : "KONA ROVE NRB BIKE 2018",
+    "info" : {
+      "img" : ["https://images.amain.com/images/large/bikes/fuji/1181454752.jpg?width=475","https://images.amain.com/images/large/bikes/fuji/1483215455.jpg?width=475", "https://images.amain.com/images/large/bikes/fuji/1182750217.jpg?width=475"],
+      "price" : "$1,249.99",
+      "title" : "KONA ROVE NRB BIKE 2018",
+      "description" : "Because of the way JavaScript objects work, the ordering of data in the JavaScript object returned by val() is not guaranteed to match the ordering on the server nor the ordering o"
+    }
+  }, {
+    "id" : 6,
+    "img" : "https://images.amain.com/images/large/bikes/fuji/1182750217.jpg?width=475",
+    "price" : "$1,299.99",
+    "title" : "DIAMONDBACK OVERDRIVE CARBON COMP 29",
+    "info" : {
+      "img" : ["https://images.amain.com/images/large/bikes/fuji/1182244517.jpg?width=475", "https://images.amain.com/images/large/bikes/fuji/1182750217.jpg?width=475", "https://images.amain.com/images/large/bikes/fuji/1182335917.jpg?width=475"],
+      "price" : "$1,299.99",
+      "title" : "DIAMONDBACK OVERDRIVE CARBON COMP 29",
+      "description" : "Depending on the data in a DataSnapshot, the val() method may return a scalar type (string, number, or boolean), an array, or an object. It may also return null, indicating that the DataSnapshot is empty (contains no data)."
+    }
+  }, {
+    "id" : 7,
+    "img" : "https://images.amain.com/images/large/bikes/fuji/1182335917.jpg?width=475",
+    "price" : "$2,199.99",
+    "title" : "NINER SIR 9 GX EAGLE JENSON BIKE",
+    "info" : {
+      "img" : ["https://images.amain.com/images/large/bikes/fuji/1182335917.jpg?width=475", "https://images.amain.com/images/large/bikes/fuji/1182244517.jpg?width=475", "https://images.amain.com/images/large/bikes/cinelli/037pgr500.jpg?width=475"],
+      "price" : "$2,199.99",
+      "title" : "NINER SIR 9 GX EAGLE JENSON BIKE",
+      "description" : "Cloud Firestore lets you write a variety of data types inside a document, including strings, booleans, numbers, dates, null, and nested arrays and objects. Cloud Firestore always stores numbers as doubles, regardless of what type of number you use in your code."
+    }
+  }, {
+    "id" : 8,
+    "img " : "https://images.amain.com/images/large/bikes/fuji/1182244517.jpg?width=475",
+    "price" : "$1,499.99",
+    "title" : "FOCUS MARES 105 BIKE 2018",
+    "info" : {
+      "img " : ["https://images.amain.com/images/large/bikes/fuji/1182244517.jpg?width=475", "https://images.amain.com/images/large/bikes/fuji/1181454752.jpg?width=475","https://images.amain.com/images/large/bikes/fuji/1483215455.jpg?width=475"],
+      "price" : "$1,499.99",
+      "title" : "FOCUS MARES 105 BIKE 2018",
+      "description" : "Using Java Map objects to represent your documents is often not very convenient, so Cloud Firestore also supports writing your own Java objects with custom classes. Cloud Firestore will internally convert the objects to supported data types"
+    }
+  }, {
+    "id" : 9,
+    "img" : "https://images.amain.com/images/large/bikes/cinelli/037pgr500.jpg?width=475",
+    "price" : "$2,099.99",
+    "title" : "KONA OPERATOR AL/DL 27.5 BIKE 2017",
+    "info": {
+      "img " : ["https://images.amain.com/images/large/bikes/fuji/1182244517.jpg?width=475", "https://images.amain.com/images/large/bikes/fuji/1181454752.jpg?width=475","https://images.amain.com/images/large/bikes/fuji/1483215455.jpg?width=475"],
+      "price" : "$2,099.99",
+      "title" : "KONA OPERATOR AL/DL 27.5 BIKE 2017",
+      "description" : "You can increment or decrement a numeric field value as shown in the following example. An increment operation increases or decreases the current value of a field by the given amount. "
+    }
+  }, {
+    "id" : 10,
+    "img" : "https://images.amain.com/images/large/bikes/fuji/1182750217.jpg?width=475",
+    "price" : "$3,399.99",
+    "title" : "EVIL FOLLOWING V1 GX SPEC-B JENSON BIKE",
+    "info" : {
+      "img" : ["https://images.amain.com/images/large/bikes/fuji/1182750217.jpg?width=475", "https://images.amain.com/images/large/bikes/fuji/1182244517.jpg?width=475", "https://images.amain.com/images/large/bikes/fuji/1181454752.jpg?width=475"],
+      "price" : "$3,399.99",
+      "title" : "EVIL FOLLOWING V1 GX SPEC-B JENSON BIKE",
+      "description" : "Increment operations are useful for implementing counters, but keep in mind that you can update a single document only once per second. If you need to update your counter above this rate, see the Distributed counters page."
+    }
+  }, {
+    "id" : 11,
+    "img" : "https://images.amain.com/images/large/bikes/fuji/1182750217.jpg?width=475",
+    "price" : "$1,299.99",
+    "title" : "MARIN SAN QUENTIN 2 BIKE 2019",
+    "info" : {
+      "img" : ["https://images.amain.com/images/large/bikes/fuji/1182750217.jpg?width=475", "https://images.amain.com/images/large/bikes/fuji/1181454752.jpg?width=475","https://images.amain.com/images/large/bikes/fuji/1483215455.jpg?width=475"],
+      "price" : "$1,299.99",
+      "title" : "MARIN SAN QUENTIN 2 BIKE 2019",
+      "description" : "Cloud Storage allows developers to quickly and easily upload files to a Google Cloud Storage bucket provided and managed by Firebase."
+    }
+  }, {
+    "id" : 12,
+    "img" : "https://images.amain.com/images/large/bikes/fuji/1181464852.jpg?width=475",
+    "price" : "$1,599.99",
+    "title" : "JAMIS XENITH RACE BIKE 2016",
+    "info" : {
+      "img" : ["https://images.amain.com/images/large/bikes/fuji/1181464852.jpg?width=475", "https://images.amain.com/images/large/bikes/seracing/2191334726.jpg?width=475"],
+      "price" : "$1,599.99",
+      "title" : "JAMIS XENITH RACE BIKE 2016",
+      "description" : "Since the default Google App Engine app and Firebase share this bucket, configuring public access may make newly uploaded App Engine files publicly accessible as well. Be sure to restrict access to your Storage bucket again when you set up authentication."
+    }
+  }, {
+    "id" : 13,
+    "img" : "https://images.amain.com/images/large/bikes/seracing/2191334726.jpg?width=475",
+    "price" : "$3,099.99",
+    "title" : "WILIER CENTO10 AIR ULTEGRA DI2 2017 BIKE",
+    "info" : {
+      "img" : ["https://images.amain.com/images/large/bikes/seracing/2191334726.jpg?width=475", "https://images.amain.com/images/large/bikes/fuji/1182244517.jpg?width=475"],
+      "price" : "$3,099.99",
+      "title" : "WILIER CENTO10 AIR ULTEGRA DI2 2017 BIKE",
+      "description" : " This is very useful for prototyping, as you can get started without setting up Firebase Authentication. However, because Cloud Storage shares a bucket with your default Google App Engine app, this rule also makes any data used by that app public as well."
+    }
+  }, {
+    "id" : 14,
+    "img" : "https://images.amain.com/images/large/bikes/fuji/1182244517.jpg?width=475",
+    "price" : "$4,599.99",
+    "title" : "EVIL OFFERING XT JENSON BIKE",
+    "info" : {
+      "img" : ["https://images.amain.com/images/large/bikes/fuji/1182244517.jpg?width=475", "https://images.amain.com/images/large/bikes/fuji/1181464852.jpg?width=475"],
+      "price" : "$4,599.99",
+      "title" : "EVIL OFFERING XT JENSON BIKE",
+      "description" : "User rules allow you to give each of your authenticated users their own personal file storage. You can also lock down your files entirely by using the private rules, but be aware that your users won't be able to read or write anything through Cloud Storage with these rules. Users accessing files from your Google App Engine app or the GCS APIs may still have access."
+    }
+  } ]
+}
