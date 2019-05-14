@@ -1,20 +1,20 @@
 import React, { Component }  from 'react';
 // import * as  firebase from 'firebase/app';
 import 'firebase/database';
-import JsonElem from './JsonItem'
+import Elem from './DataItem'
 import styled from 'styled-components';
 import { withFirebase } from '../Firebase';
 
 import { Link } from "react-router-dom";
 
 
-const JsonList = styled.ul`
+const List = styled.ul`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   padding: 0;
 `
-const JsonItem = styled.li`
+const Item = styled.li`
   list-style: none;
   margin: 5px;
   background: gray;
@@ -54,20 +54,20 @@ class Landing extends Component {
     const {elem, loading} = this.state
     const li = elem.map(i => {
       return (
-        <JsonItem key={i.id}>
+        <Item key={i.id}>
           <Link to={`${i.id}`}>
-            <JsonElem item={i}/>
+            <Elem item={i}/>
           </Link>
-        </JsonItem>
+        </Item>
       )
     })
     
     return (
       <BlockList>
-          <JsonList>
+          <List>
           {loading && <div>Loading ...</div>}
             {li}
-          </JsonList>
+          </List>
       </BlockList>
     );
   }

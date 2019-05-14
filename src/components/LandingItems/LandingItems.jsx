@@ -6,13 +6,31 @@ var _ = require('lodash');
 // const MainInfoBlock = styled.div`
 
 // `
-const MainInfoAboutFoto = styled.div`
+const RR = styled.div`
   display: flex;
-  flex wrap: wrap;
+  flex-direction: column;
+  flexWrap: wrap;
+  width: 40%;
+  height: 100%;
+  overflow: hidden;
+  padding: 20px;
+`
+const MainInfoAboutFoto = styled.div`
+  width: 100%;
+  height: 90vh;
+  overflow-y: scroll;
+  padding-right: 40px;
 `
 const MainInfoAbout = styled.div`
-
+  display: flex;
 `
+const MainInfoBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 20px;
+`
+
 
  class ItemInfo extends Component{
 
@@ -46,28 +64,37 @@ const MainInfoAbout = styled.div`
 
     const descriptionItem = match.map(i => {
       return(
-        <MainInfoAbout>
-          { objectElem !== null ? <div>
-            <h3>{objectElem.title}</h3>
-            <MainInfoAboutFoto>{i.img.map(k => {
-              const id = Math.floor(Math.random() * 123568)
-              console.log(id)
-              return <p key={id} style={{"width": "20%", "padding": "30px"}}><img src={k} style={{ 
-                "width": "100%",
-                "height": "100%" }} alt=""/></p>
-            })}
+        <div>
+          { objectElem !== null ? <MainInfoAbout>
+            <RR>
+            <MainInfoAboutFoto>
+              {i.img.map(k => {
+                const id = Math.floor(Math.random() * 123568)
+                console.log(id)
+                return <p key={id} style={{ 
+                    "padding": "0",
+                    "margin": "0"}}>
+                  <img src={k} style={{ 
+                  "width": "100%",
+                  "height": "100%" }} alt=""/></p>
+              })}
             </MainInfoAboutFoto>
-            <p>{objectElem.price}</p>
-            <p>{i.description}</p>
-          </div> : <div>Loading ...</div>}
-        </MainInfoAbout>
+            </RR>
+            <MainInfoBlock>
+              <h3>{objectElem.title}</h3>
+              <p>{objectElem.price}</p>
+              <p>{i.description}</p>
+            </MainInfoBlock>
+
+          </MainInfoAbout> : <div>Loading ...</div>}
+        </div>
       )
     })
     return (
-      <div>
+      <MainInfoAbout>
         {loading && <div>Loading ...</div>}
         {descriptionItem}
-      </div>
+      </MainInfoAbout>
     )}
 }
 
