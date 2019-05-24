@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/href-no-hash */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -23,7 +26,7 @@ class PasswordForgetFormBase extends Component {
     this.state = { ...INITIAL_STATE };
   }
 
-  onSubmit = event => {
+  onSubmit = (event) => {
     const { email } = this.state;
 
     this.props.firebase
@@ -31,14 +34,14 @@ class PasswordForgetFormBase extends Component {
       .then(() => {
         this.setState({ ...INITIAL_STATE });
       })
-      .catch(error => {
+      .catch((error) => {
         this.setState({ error });
       });
 
     event.preventDefault();
   };
 
-  onChange = event => {
+  onChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
 

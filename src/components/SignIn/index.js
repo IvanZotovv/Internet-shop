@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/href-no-hash */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
@@ -29,7 +32,7 @@ class SignInFormBase extends Component {
     this.state = { ...INITIAL_STATE };
   }
 
-  onSubmit = event => {
+  onSubmit = (event) => {
     const { email, password } = this.state;
 
     this.props.firebase
@@ -38,14 +41,14 @@ class SignInFormBase extends Component {
         this.setState({ ...INITIAL_STATE });
         this.props.history.push(ROUTES.HOME);
       })
-      .catch(error => {
+      .catch((error) => {
         this.setState({ error });
       });
 
     event.preventDefault();
   };
 
-  onChange = event => {
+  onChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
 

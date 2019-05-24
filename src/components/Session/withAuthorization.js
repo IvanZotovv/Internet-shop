@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/href-no-hash */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
@@ -6,11 +9,11 @@ import AuthUserContext from './context';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
-const withAuthorization = condition => Component => {
+const withAuthorization = condition => (Component) => {
   class WithAuthorization extends React.Component {
     componentDidMount() {
       this.listener = this.props.firebase.auth.onAuthStateChanged(
-        authUser => {
+        (authUser) => {
           if (!condition(authUser)) {
             this.props.history.push(ROUTES.SIGN_IN);
           }
@@ -25,8 +28,7 @@ const withAuthorization = condition => Component => {
     render() {
       return (
         <AuthUserContext.Consumer>
-          {authUser =>
-            condition(authUser) ? <Component {...this.props} /> : null
+          {authUser => (condition(authUser) ? <Component {...this.props} /> : null)
           }
         </AuthUserContext.Consumer>
       );

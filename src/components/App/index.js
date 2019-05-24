@@ -1,6 +1,8 @@
+/* eslint-disable jsx-a11y/href-no-hash */
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+import { connect } from 'react-redux';
 import Navigation from '../Navigation';
 import LandingPage from '../Landing';
 import SignUpPage from '../SignUp';
@@ -9,10 +11,22 @@ import PasswordForgetPage from '../PasswordForget';
 import HomePage from '../Home';
 import AccountPage from '../Account';
 import AdminPage from '../Admin';
+import { watchItemData } from '../../redux/app-redux';
 
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
 import LandingItems from '../LandingItems/LandingItems';
+
+const mapStateToProps = (state) => {
+  return {
+    itemData: state.itemData,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    watchItemData: () => { dispatch(watchItemData()); },
+  };
+};
 
 const App = () => (
   <Router>
@@ -30,10 +44,10 @@ const App = () => (
         <Route path={ROUTES.ACCOUNT} component={AccountPage} />
         <Route path={ROUTES.ADMIN} component={AdminPage} />
 
-        <Route path={ROUTES.LANDING_ITEMS} component={(id) => <LandingItems item={id}/>} />} />
+        <Route path={ROUTES.LANDING_ITEMS} component={id => <LandingItems item={id} />} />
       </Switch>
     </div>
   </Router>
 );
 
-export default withAuthentication(App);
+export default connect(mapStateToProps, mapDispatchToProps)(withAuthentication(App));

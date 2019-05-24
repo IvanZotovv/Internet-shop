@@ -1,15 +1,18 @@
+/* eslint-disable jsx-a11y/href-no-hash */
 import React from 'react';
 
-import { AuthUserContext } from '../Session';
+import { AuthUserContext, withAuthorization } from '../Session';
 import { PasswordForgetForm } from '../PasswordForget';
 import PasswordChangeForm from '../PasswordChange';
-import { withAuthorization } from '../Session';
 
 const AccountPage = () => (
   <AuthUserContext.Consumer>
     {authUser => (
       <div>
-        <h1>Account: {authUser.email}</h1>
+        <h1>
+          Account:
+          {authUser.email}
+        </h1>
         <PasswordForgetForm />
         <PasswordChangeForm />
       </div>

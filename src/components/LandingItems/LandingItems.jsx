@@ -1,101 +1,125 @@
-import React, {Component} from 'react'
+/* eslint-disable jsx-a11y/href-no-hash */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable array-callback-return */
+import React, { Component } from 'react';
 import styled from 'styled-components';
-import { withFirebase } from '../Firebase'
-var _ = require('lodash');
+import { withFirebase } from '../Firebase';
+import fb from '../Firebase/fb';
+const _ = require('lodash');
 
-// const MainInfoBlock = styled.div`
-
-// `
 const RR = styled.div`
   display: flex;
   flex-direction: column;
   flexWrap: wrap;
-  width: 40%;
+  max-width: 50%;
   height: 100%;
   overflow: hidden;
-  padding: 20px;
-`
+  padding: 0;
+`;
 const MainInfoAboutFoto = styled.div`
   width: 100%;
   height: 90vh;
   overflow-y: scroll;
   padding-right: 40px;
-`
+`;
 const MainInfoAbout = styled.div`
   display: flex;
-`
+  justify-content: space-evenly;
+`;
 const MainInfoBlock = styled.div`
   display: flex;
   flex-direction: column;
   width: 50%;
-  padding: 20px;
-`
+  padding: 0;
+`;
+const Image = styled.img`
+  max-width: 100%;
+  height: auto;
+  box-sizing: border-box;
+`;
+const Page = styled.p`
+  padding: '0',
+  margin: '0',
+`;
 
+const ItemSection = styled.section`
+  display: flex;
+  justify-content: center;
+  width: 90%;
+`;
 
- class ItemInfo extends Component{
-
+class ItemInfo extends Component {
   state = {
-    loading: false, 
-    objectElem: null
+    loading: false,
+    objectElem: null,
   }
 
-  componentDidMount(){
-    this.setState({loading: true })
-    const id = this.props.item.location.pathname 
-    this.props.firebase.getDataId(id).on("value", snapshot => {
-      const item = snapshot.val()
-      this.setState({
-        objectElem: item,
-        loading: false,
-      })
-    })
-  }
-  componentWillUnmount(){
-    this.props.firebase.getDataId().off()
+  componentDidMount() {
+    this.setState({ loading: true });
+    const id = this.props.item.location.pathname;
+    fb.firestore()
+      .collection('items')
+      .get()
+      .then((collection) => {
+        const itemData = collection.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        itemData.map((i) => {
+          if (`/${i.id}` === id) {
+            this.setState({
+              objectElem: i,
+              loading: false,
+            });
+          }
+        });
+      });
   }
 
-  render(){
-    const {loading, objectElem} = this.state
+  render() {
+    const { loading, objectElem } = this.state;
 
-    
     const match = _.filter(objectElem, (i) => {
-      return i.img
+      return i.img;
     });
 
-    const descriptionItem = match.map(i => {
-      return(
-        <div>
-          { objectElem !== null ? <MainInfoAbout>
-            <RR>
-            <MainInfoAboutFoto>
-              {i.img.map(k => {
-                const id = Math.floor(Math.random() * 123568)
-                console.log(id)
-                return <p key={id} style={{ 
-                    "padding": "0",
-                    "margin": "0"}}>
-                  <img src={k} style={{ 
-                  "width": "100%",
-                  "height": "100%" }} alt=""/></p>
-              })}
-            </MainInfoAboutFoto>
-            </RR>
-            <MainInfoBlock>
-              <h3>{objectElem.title}</h3>
-              <p>{objectElem.price}</p>
-              <p>{i.description}</p>
-            </MainInfoBlock>
-
-          </MainInfoAbout> : <div>Loading ...</div>}
-        </div>
-      )
-    })
+    const descriptionItem = match.map((i) => {
+      return (
+        <ItemSection>
+          { objectElem !== null ? (
+            <MainInfoAbout>
+              <RR>
+                <MainInfoAboutFoto>
+                  {i.img.map((k) => {
+                    const id = Math.floor(Math.random() * 123568);
+                    return (
+                      <Page
+                        key={id}
+                      >
+                        <Image
+                          src={k}
+                          alt=""
+                        />
+                      </Page>
+                    );
+                  })}
+                </MainInfoAboutFoto>
+              </RR>
+              <MainInfoBlock>
+                <h3>{objectElem.title}</h3>
+                <p>{objectElem.price}</p>
+                <p>{i.description}</p>
+              </MainInfoBlock>
+            </MainInfoAbout>
+          ) : <div>Loading ...</div>}
+        </ItemSection>
+      );
+    });
     return (
       <MainInfoAbout>
         {loading && <div>Loading ...</div>}
         {descriptionItem}
       </MainInfoAbout>
-    )}
+    );
+  }
 }
 
-export default withFirebase(ItemInfo)
+export default withFirebase(ItemInfo);

@@ -1,3 +1,8 @@
+/* eslint-disable jsx-a11y/href-no-hash */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/no-unescaped-entities */
+
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
@@ -26,12 +31,11 @@ class SignUpFormBase extends Component {
     this.state = { ...INITIAL_STATE };
   }
 
-  onSubmit = event => {
+  onSubmit = (event) => {
     const { username, email, passwordOne } = this.state;
-
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
-      .then(authUser => {
+      .then((authUser) => {
         // Create a user in your Firebase realtime database
         this.props.firebase
           .user(authUser.user.uid)
@@ -43,18 +47,18 @@ class SignUpFormBase extends Component {
             this.setState({ ...INITIAL_STATE });
             this.props.history.push(ROUTES.HOME);
           })
-          .catch(error => {
+          .catch((error) => {
             this.setState({ error });
           });
       })
-      .catch(error => {
+      .catch((error) => {
         this.setState({ error });
       });
 
     event.preventDefault();
   };
 
-  onChange = event => {
+  onChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
@@ -67,11 +71,7 @@ class SignUpFormBase extends Component {
       error,
     } = this.state;
 
-    const isInvalid =
-      passwordOne !== passwordTwo ||
-      passwordOne === '' ||
-      email === '' ||
-      username === '';
+    const isInvalid = passwordOne !== passwordTwo || passwordOne === '' || email === '' || username === '';
 
     return (
       <form onSubmit={this.onSubmit}>
@@ -115,7 +115,8 @@ class SignUpFormBase extends Component {
 
 const SignUpLink = () => (
   <p>
-    Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
+    Don't have an account?
+    <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
   </p>
 );
 
