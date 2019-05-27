@@ -75,7 +75,7 @@ const Input = styled.input`
 const Title = styled.h1`
   padding: 0;
   margin: 0;
-`
+`;
 
 class AddItemToBasket extends Component {
   render() {

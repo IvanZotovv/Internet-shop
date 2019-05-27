@@ -11,8 +11,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import ShopItems from './ShopItems';
 import { withFirebase } from '../Firebase';
-import { watchItemData } from '../../redux/app-redux';
-import AddItemToBasket from '../Basket/AddItemToBasket';
+import { watchItemData, addItemToCart } from '../../redux/app-redux';
 import FilterField from '../FilterField/FilterField';
 
 
@@ -39,14 +38,22 @@ const EditItemBlock = styled.div`
   padding: 0 5px;
 `;
 
+const EditItemButton = styled.div`
+  background: red;
+  padding: 5px 10px;
+  cursor: pointer;
+`;
+
 const mapStateToProps = (state) => {
   return {
     itemData: state.itemData,
+    setItemToData: state.setItemToData,
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
     watchItemData: () => { dispatch(watchItemData()); },
+    addItemToCart: () => { dispatch(addItemToCart()); },
   };
 };
 
@@ -56,11 +63,16 @@ class Landing extends Component {
     this.props.watchItemData();
   }
 
+  handleClick = () => {
+    console.log('fff');
+    this.props.addItemToCart();
+  };
+
   render() {
     const { itemData } = this.props;
     const dataArray = Object.values(itemData);
-
     const li = dataArray.map((i) => {
+      console.log(i);
       return (
         <Item key={i.id}>
           <Link to={`${i.id}`}>
@@ -71,7 +83,7 @@ class Landing extends Component {
               Price:
               {i.price}
             </p>
-            <AddItemToBasket item={i} />
+            <EditItemButton onClick={this.handleClick}>Add to Cart</EditItemButton>
           </EditItemBlock>
         </Item>
       );

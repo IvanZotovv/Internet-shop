@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/href-no-hash */
 import React from 'react';
 import styled from 'styled-components';
-import AddItemToBasket from '../Basket/AddItemToBasket';
+// import AddItemToBasket from '../Basket/AddItemToBasket';
 
 const ItemBlock = styled.div`
   display: block;
