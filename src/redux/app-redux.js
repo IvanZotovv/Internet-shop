@@ -9,14 +9,23 @@ import fb from '../components/Firebase/fb';
 
 const initialState = {
   itemData: {},
+  setItemToData: [],
 };
 
 // Reducer
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'setPersonData':
+    case 'SET_PERSON_DATA':
       return { ...state, itemData: action.value };
+    case 'ADD_ITEM_TO_CART':
+      return {
+        ...state,
+        setItemToData: [
+          ...state.setItemToData,
+          action.value,
+        ],
+      };
     default:
       return state;
   }
@@ -27,28 +36,30 @@ const reducer = (state = initialState, action) => {
 const store = createStore(reducer, applyMiddleware(thinkMiddleware));
 export { store };
 
+
 // Action creator
 
 
 const setPersonData = (itemData) => {
   return {
-    type: 'setPersonData',
+    type: 'SET_PERSON_DATA',
     value: itemData,
   };
 };
 
+const addCartData = (setItemToData) => {
+  return {
+    type: 'ADD_ITEM_TO_CART',
+    value: setItemToData,
+  };
+};
+
+const addItemToCart = item => (dispatch) => {
+
+  dispatch(addCartData(item));
+};
 
 const watchItemData = () => (dispatch) => {
-  // This is how to get data from realtime database
-  // const data = fb.database().ref('items');
-  // data.on('value', (snapshot) => {
-  //   var itemData = snapshot.val();
-  //   console.log(itemData);
-  //   dispatch(setPersonData(itemData));
-  // });
-
-  // This is how to get data from cloud database
-
   fb.firestore()
     .collection('items')
     .get()
@@ -58,4 +69,4 @@ const watchItemData = () => (dispatch) => {
     });
 };
 
-export { setPersonData, watchItemData };
+export { watchItemData, addItemToCart };

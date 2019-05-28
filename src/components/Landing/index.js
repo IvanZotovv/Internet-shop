@@ -53,7 +53,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     watchItemData: () => { dispatch(watchItemData()); },
-    addItemToCart: () => { dispatch(addItemToCart()); },
+    addItemToCart: (item) => { dispatch(addItemToCart(item)); },
   };
 };
 
@@ -63,27 +63,25 @@ class Landing extends Component {
     this.props.watchItemData();
   }
 
-  handleClick = () => {
-    console.log('fff');
-    this.props.addItemToCart();
+  handleClick = item => () => {
+    this.props.addItemToCart(item);
   };
 
   render() {
     const { itemData } = this.props;
     const dataArray = Object.values(itemData);
-    const li = dataArray.map((i) => {
-      console.log(i);
+    const li = dataArray.map((item) => {
       return (
-        <Item key={i.id}>
-          <Link to={`${i.id}`}>
-            <ShopItems elem={i} />
+        <Item key={item.id}>
+          <Link to={`${item.id}`}>
+            <ShopItems elem={item} />
           </Link>
           <EditItemBlock>
             <p>
               Price:
-              {i.price}
+              {item.price}
             </p>
-            <EditItemButton onClick={this.handleClick}>Add to Cart</EditItemButton>
+            <EditItemButton onClick={this.handleClick(item)}>Add to Cart</EditItemButton>
           </EditItemBlock>
         </Item>
       );
