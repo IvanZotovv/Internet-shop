@@ -9,13 +9,13 @@ import SignUpPage from '../SignUp';
 import SignInPage from '../SignIn';
 import PasswordForgetPage from '../PasswordForget';
 import HomePage from '../Home';
-import AccountPage from '../Account';
 import AdminPage from '../Admin';
 import { watchItemData } from '../../redux/app-redux';
 
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
 import LandingItems from '../LandingItems/LandingItems';
+import ModalBlock from '../ModalBlock';
 
 const mapStateToProps = (state) => {
   return {
@@ -41,11 +41,11 @@ const App = () => (
           component={PasswordForgetPage}
         />
         <Route path={ROUTES.HOME} component={HomePage} />
-        <Route path={ROUTES.ACCOUNT} component={AccountPage} />
         <Route path={ROUTES.ADMIN} component={AdminPage} />
-
+        <Route path={ROUTES.BASKET} component={ModalBlock} />
         <Route path={ROUTES.LANDING_ITEMS} component={id => <LandingItems item={id} />} />
       </Switch>
+
     </div>
   </Router>
 );

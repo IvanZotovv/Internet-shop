@@ -58,9 +58,6 @@ const NavigationAuth = () => (
         <Link style={{ textDecoration: 'none' }} to={ROUTES.HOME}>Home</Link>
       </AuthButtonItem>
       <AuthButtonItem>
-        <Link style={{ textDecoration: 'none' }} to={ROUTES.ACCOUNT}>Account</Link>
-      </AuthButtonItem>
-      <AuthButtonItem>
         <Link style={{ textDecoration: 'none' }} to={ROUTES.ADMIN}>Admin</Link>
       </AuthButtonItem>
       <AuthButtonItem>

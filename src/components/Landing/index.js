@@ -37,17 +37,16 @@ const EditItemBlock = styled.div`
   align-items: center;
   padding: 0 5px;
 `;
-
 const EditItemButton = styled.div`
   background: red;
   padding: 5px 10px;
   cursor: pointer;
 `;
 
+
 const mapStateToProps = (state) => {
   return {
     itemData: state.itemData,
-    setItemToData: state.setItemToData,
   };
 };
 const mapDispatchToProps = (dispatch) => {
@@ -69,6 +68,8 @@ class Landing extends Component {
 
   render() {
     const { itemData } = this.props;
+    console.log(itemData.itemData);
+
     const dataArray = Object.values(itemData);
     const li = dataArray.map((item) => {
       return (

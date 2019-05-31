@@ -21,7 +21,7 @@ const Image = styled.img`
 const ShopItem = ({ ...elem }) => {
   const item = Object.values(elem);
   const ShopItemInfo = item.map(({
-    title, img, id, price,
+    title, img, id,
   }) => {
     return (
       <ItemBlock key={id}>

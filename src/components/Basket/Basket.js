@@ -3,15 +3,16 @@
 import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import cart from '../../images/cart.png';
-import ModalBlock from '../ModalBlock/ModalBlock';
+import * as ROUTES from '../../constants/routes';
+import { basketReducer } from '../../redux/reducer/basketReducer';
 
 const IconField = styled.div`
   position: relative;
   &:hover {
     opacity: .7;
   }  
-
 `;
 const CountNumber = styled.h3`
   position: absolute;
@@ -33,21 +34,31 @@ const Image = styled.img`
 
 const mapStateToProps = (state) => {
   return {
-    setItemToData: state.setItemToData,
+    ItemToBasket: [
+      {
+        data: {
+          basketReducer,
+        },
+        count: state.count,
+      },
+    ],
   };
 };
 
 
-const Basket = ({ setItemToData }) => {
-  const count = setItemToData.length;
+function Basket({ ItemToBasket }) {
+  const count = ItemToBasket;
+  console.log(ItemToBasket);
+
   return (
     <IconField style={{ padding: 0 }}>
       <CountNumber>{count}</CountNumber>
-      <div onClick={() => <ModalBlock />}>
+      <Link to={ROUTES.BASKET}>
         <Image src={cart} alt="Logo" />
-      </div>
+      </Link>
+      {/* {isOpen ? <ModalBlock /> : null} */}
     </IconField>
   );
-};
+}
 
 export default connect(mapStateToProps)(Basket);

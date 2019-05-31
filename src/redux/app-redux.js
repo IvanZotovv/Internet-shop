@@ -2,38 +2,31 @@
 
 import { createStore, applyMiddleware } from 'redux';
 import thinkMiddleware from 'redux-thunk';
+import combineReducers from './reducer/index';
 import fb from '../components/Firebase/fb';
-
-
-// Initial State
 
 const initialState = {
   itemData: {},
-  setItemToData: [],
 };
 
-// Reducer
 
-const reducer = (state = initialState, action) => {
+export const itemReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'SET_PERSON_DATA':
-      return { ...state, itemData: action.value };
-    case 'ADD_ITEM_TO_CART':
+    case 'SET_ITEM_DATA':
       return {
         ...state,
-        setItemToData: [
-          ...state.setItemToData,
-          action.value,
-        ],
+        itemData: action.value,
       };
     default:
       return state;
   }
 };
 
+
+
 // Store
 
-const store = createStore(reducer, applyMiddleware(thinkMiddleware));
+const store = createStore(itemReducer, applyMiddleware(thinkMiddleware));
 export { store };
 
 
@@ -42,21 +35,42 @@ export { store };
 
 const setPersonData = (itemData) => {
   return {
-    type: 'SET_PERSON_DATA',
+    type: 'SET_ITEM_DATA',
     value: itemData,
   };
 };
 
-const addCartData = (setItemToData) => {
+const addCartData = (ItemToBasket) => {
   return {
     type: 'ADD_ITEM_TO_CART',
-    value: setItemToData,
+    value: ItemToBasket,
   };
 };
 
-const addItemToCart = item => (dispatch) => {
+const deleteCartFromData = (ItemToBasket) => {
+  return {
+    type: 'REMOVE_ITEM',
+    value: ItemToBasket,
+  };
+};
 
+// const getTotalCost = (ItemToBasket) => {
+//   return {
+//     type: 'TOTAL_COAST',
+//     value: ItemToBasket.reduce((result, item) => item.qty * item.price + result, 0),
+//   };
+// };
+
+// const totalPrice = item => (dispatch) => {
+//   dispatch(getTotalCost(item));
+// };
+
+const addItemToCart = item => (dispatch) => {
   dispatch(addCartData(item));
+};
+
+const deleteItem = item => (dispatch) => {
+  dispatch(deleteCartFromData(item));
 };
 
 const watchItemData = () => (dispatch) => {
@@ -69,4 +83,4 @@ const watchItemData = () => (dispatch) => {
     });
 };
 
-export { watchItemData, addItemToCart };
+export { watchItemData, addItemToCart, deleteItem };
