@@ -1,17 +1,13 @@
-/* eslint-disable jsx-a11y/href-no-hash */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
-/* eslint-disable no-useless-constructor */
-/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
-// import * as  firebase from 'firebase/app';
 import 'firebase/database';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import ShopItems from './ShopItems';
 import { withFirebase } from '../Firebase';
-import { watchItemData, addItemToCart } from '../../redux/app-redux';
+import { watchItemData, addCartData } from '../../redux/app-redux';
 import FilterField from '../FilterField/FilterField';
 
 
@@ -46,13 +42,13 @@ const EditItemButton = styled.div`
 
 const mapStateToProps = (state) => {
   return {
-    itemData: state.itemData,
+    items: state.items,
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
     watchItemData: () => { dispatch(watchItemData()); },
-    addItemToCart: (item) => { dispatch(addItemToCart(item)); },
+    addItemToCart: (item) => { dispatch(addCartData(item)); },
   };
 };
 
@@ -67,11 +63,8 @@ class Landing extends Component {
   };
 
   render() {
-    const { itemData } = this.props;
-    console.log(itemData.itemData);
-
-    const dataArray = Object.values(itemData);
-    const li = dataArray.map((item) => {
+    const { items } = this.props;
+    const li = items.map((item) => {
       return (
         <Item key={item.id}>
           <Link to={`${item.id}`}>

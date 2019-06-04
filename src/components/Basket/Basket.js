@@ -1,12 +1,10 @@
-/* eslint-disable react/no-unused-state */
-/* eslint-disable jsx-a11y/href-no-hash */
+
 import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import cart from '../../images/cart.png';
 import * as ROUTES from '../../constants/routes';
-import { basketReducer } from '../../redux/reducer/basketReducer';
 
 const IconField = styled.div`
   position: relative;
@@ -34,25 +32,15 @@ const Image = styled.img`
 
 const mapStateToProps = (state) => {
   return {
-    ItemToBasket: [
-      {
-        data: {
-          basketReducer,
-        },
-        count: state.count,
-      },
-    ],
+    basket: state.basket.totalCount,
   };
 };
 
 
-function Basket({ ItemToBasket }) {
-  const count = ItemToBasket;
-  console.log(ItemToBasket);
-
+function Basket({ basket }) {
   return (
     <IconField style={{ padding: 0 }}>
-      <CountNumber>{count}</CountNumber>
+      <CountNumber>{basket}</CountNumber>
       <Link to={ROUTES.BASKET}>
         <Image src={cart} alt="Logo" />
       </Link>

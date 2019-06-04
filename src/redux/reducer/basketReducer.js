@@ -1,40 +1,36 @@
 /* eslint-disable jsx-a11y/href-no-hash */
 
 const initialState = {
-  ItemToBasket: [
-    {
-      data: {},
-      count: 0,
-    },
-  ],
+  items: {},
+  totalCount: 0,
 };
 
 
 export const basketReducer = (state = initialState, action) => {
-  const itemCount = state.initialState.ItemToBasket.filter(i => (i.id === action.payload.id))[0];
+  // console.log(state, action);
   switch (action.type) {
-    case 'ADD_ITEM_TO_CART':
+    case 'ADD_ITEM_TO_CART': {
+      const existedItem = state.items[action.value.id];
+      const newItem = {
+        ...action.value,
+        count: existedItem ? existedItem.count + 1 : 1,
+      };
+      const items = { ...state.items };
+      items[action.value.id] = newItem;
+      return {
+        items,
+        totalCount: state.totalCount + 1,
+      };
+    }
+    case 'REMOVE_ITEM': {
+      const newState = state.items[action.value.id];
       return {
         ...state,
-        ItemToBasket: [
-          ...{
-            data: {
-              itemCount,
-            },
-            count: action.value[0].count + 1,
-          },
-        ],
-        // count: state.count + 1,
+        items: newState,
+        totalCount: state.totalCount - 1,
       };
-    // case 'REMOVE_ITEM':
-    //   return {
-    //     ...state,
-    //     ItemToBasket: [
-    //       ...{
-    //         data: state.ItemToBasket.data.filter(item => action.value !== item),
-    //       },
-    //     ],
-    //   };
+    }
+
     default:
       return state;
   }

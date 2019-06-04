@@ -4,8 +4,8 @@ import { itemReducer } from './itemReducer';
 import { basketReducer } from './basketReducer';
 
 export default combineReducers({
-  itemReducer,
-  //basketReducer,
+  items: itemReducer,
+  basket: basketReducer,
 });
 
 

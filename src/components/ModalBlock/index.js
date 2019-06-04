@@ -4,9 +4,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { deleteItem } from '../../redux/app-redux';
-import { basketReducer } from '../../redux/reducer/basketReducer';
-// const _ = require('lodash');
+import { deleteCartFromData } from '../../redux/app-redux';
 
 
 const BlockList = styled.div`
@@ -51,52 +49,33 @@ const Close = styled.h3`
 `;
 const mapStateToProps = (state) => {
   return {
-    ItemToBasket: [
-      ...{
-        data: {
-          basketReducer,
-        },
-        count: state.count,
-      },
-    ],
+    basket: state.basket,
   };
 };
+
 const mapDispatchToProps = (dispatch) => {
   return {
-    deleteItem: (item) => { dispatch(deleteItem(item)); },
+    deleteItem: (item) => { dispatch(deleteCartFromData(item)); },
   };
 };
 
 
 class ModalBlock extends Component {
-  constructor(props) {
-    super(props);
-    this.itemsArr = this.props.addToBasket;
-    this.countItems();
-  }
-
-  countItems() {
-    const itemsArray = this.itemsArr;
-    console.log(itemsArray);
-  }
-
   handleChange = item => () => {
     this.props.deleteItem(item);
   };
 
   render() {
-    const { ItemToBasket, count } = this.props;
 
-    // const count = ItemToBasket;
-    console.log(count);
-    const filter = ItemToBasket.map(e => e.id).map((e, i, final) => final.indexOf(e) === i && i).filter(e => ItemToBasket[e]).map(e => ItemToBasket[e]);
-
-    const cartList = filter.map((i) => {
+    const { ...items } = this.props.basket;
+    const element = Object.values(items.items);
+    const cartList = element.map((i) => {
+      console.log(i);
       return (
-        <CartItem>
+        <CartItem key={i.id}>
           <TitleBlock>
             <h3>{i.title}</h3>
-            <p>{}</p>
+            <p> x{i.count}</p>
             <Close onClick={this.handleChange(i)}>X</Close>
           </TitleBlock>
           <p>{i.price}</p>
@@ -112,7 +91,8 @@ class ModalBlock extends Component {
       <BlockList>
         <h1>Orders cart</h1>
         <CartList>
-          { count.length === 0 ? <h4> Basket is empty </h4> : cartList }
+          {cartList.totalCount === 0 ? <h4> Basket is empty </h4> : cartList }
+          {cartList}
         </CartList>
       </BlockList>
     );

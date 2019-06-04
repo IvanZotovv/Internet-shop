@@ -19,26 +19,17 @@ const Image = styled.img`
 `;
 
 const ShopItem = ({ ...elem }) => {
-  const item = Object.values(elem);
-  const ShopItemInfo = item.map(({
-    title, img, id,
-  }) => {
-    return (
-      <ItemBlock key={id}>
-        <h3>{title}</h3>
-        <ImageBlock>
-          <Image
-            src={img}
-            alt=""
-          />
-        </ImageBlock>
-      </ItemBlock>
-    );
-  });
+  const { id, img, title } = elem.elem;
   return (
-    <div>
-      {ShopItemInfo}
-    </div>
+    <ItemBlock key={id}>
+      <h3>{title}</h3>
+      <ImageBlock>
+        <Image
+          src={img}
+          alt=""
+        />
+      </ImageBlock>
+    </ItemBlock>
   );
 };
 

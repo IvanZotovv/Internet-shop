@@ -5,28 +5,9 @@ import thinkMiddleware from 'redux-thunk';
 import combineReducers from './reducer/index';
 import fb from '../components/Firebase/fb';
 
-const initialState = {
-  itemData: {},
-};
-
-
-export const itemReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case 'SET_ITEM_DATA':
-      return {
-        ...state,
-        itemData: action.value,
-      };
-    default:
-      return state;
-  }
-};
-
-
-
 // Store
 
-const store = createStore(itemReducer, applyMiddleware(thinkMiddleware));
+const store = createStore(combineReducers, applyMiddleware(thinkMiddleware));
 export { store };
 
 
@@ -40,17 +21,17 @@ const setPersonData = (itemData) => {
   };
 };
 
-const addCartData = (ItemToBasket) => {
+export const addCartData = (ItemToBasket) => {
   return {
     type: 'ADD_ITEM_TO_CART',
     value: ItemToBasket,
   };
 };
 
-const deleteCartFromData = (ItemToBasket) => {
+export const deleteCartFromData = (removeItem) => {
   return {
     type: 'REMOVE_ITEM',
-    value: ItemToBasket,
+    value: removeItem,
   };
 };
 
@@ -69,8 +50,8 @@ const addItemToCart = item => (dispatch) => {
   dispatch(addCartData(item));
 };
 
-const deleteItem = item => (dispatch) => {
-  dispatch(deleteCartFromData(item));
+const deleteItem = removeItem => (dispatch) => {
+  dispatch(deleteCartFromData(removeItem));
 };
 
 const watchItemData = () => (dispatch) => {
