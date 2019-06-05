@@ -83,7 +83,7 @@ class AddItemToBasket extends Component {
       <Container>
         <Title>Your bike</Title>
         <InputField>
-          <Input class="" type="email" placeholder="Choose your bike!"></Input>
+          <Input type="email" placeholder="Choose your bike!"></Input>
           <Span></Span>
         </InputField>
         <Basket />

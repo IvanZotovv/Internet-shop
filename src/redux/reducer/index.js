@@ -7,7 +7,3 @@ export default combineReducers({
   items: itemReducer,
   basket: basketReducer,
 });
-
-
-// console.log(itemReducer);
-// console.log(basketReducer);

@@ -1,5 +1,6 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/no-unused-state */
+/* eslint-disable no-unused-expressions */
+
 import React, { Component } from 'react';
 import 'firebase/database';
 import { Link } from 'react-router-dom';
@@ -58,11 +59,14 @@ class Landing extends Component {
     this.props.watchItemData();
   }
 
+
+
   handleClick = item => () => {
     this.props.addItemToCart(item);
   };
 
   render() {
+    // console.log(this.state.items);
     const { items } = this.props;
     const li = items.map((item) => {
       return (

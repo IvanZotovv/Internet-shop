@@ -50,8 +50,9 @@ const addItemToCart = item => (dispatch) => {
   dispatch(addCartData(item));
 };
 
-const deleteItem = removeItem => (dispatch) => {
-  dispatch(deleteCartFromData(removeItem));
+const deleteItem = item => (dispatch) => {
+  console.log(item);
+  dispatch(deleteCartFromData(item));
 };
 
 const watchItemData = () => (dispatch) => {

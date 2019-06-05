@@ -1,18 +1,26 @@
-/* eslint-disable jsx-a11y/href-no-hash */
-/* eslint-disable import/named */
-/* eslint-disable jsx-a11y/alt-text */
+
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { deleteCartFromData } from '../../redux/app-redux';
+import ShoppingCart from '../ShoppingCart/ShoppingCart';
 
-
+const ShoppingCartBlock = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+const ShoppingCartSection = styled.div`
+  width 30%;
+  max-height: 350px;
+  background: rgb(224, 221, 221);
+`;
 const BlockList = styled.div`
   width: 90%;
   position: relative;
   margin: auto;
 `;
 const CartList = styled.ul`
+  width: 68%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -24,7 +32,7 @@ const CartItem = styled.li`
   border: 1px solid black;
   list-style: none;
   padding: 15px;
-  margin: 5px 0;
+  margin-bottom: 5px;
 `;
 const Page = styled.p`
   padding: '0',
@@ -61,16 +69,22 @@ const mapDispatchToProps = (dispatch) => {
 
 
 class ModalBlock extends Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.items = this.props.items;
+
+  // }
+
+
   handleChange = item => () => {
     this.props.deleteItem(item);
   };
 
-  render() {
 
+  render() {
     const { ...items } = this.props.basket;
     const element = Object.values(items.items);
     const cartList = element.map((i) => {
-      console.log(i);
       return (
         <CartItem key={i.id}>
           <TitleBlock>
@@ -78,11 +92,11 @@ class ModalBlock extends Component {
             <p> x{i.count}</p>
             <Close onClick={this.handleChange(i)}>X</Close>
           </TitleBlock>
-          <p>{i.price}</p>
           <p>{i.description}</p>
           <Page>
             <Image src={i.img} />
           </Page>
+          <p>{i.price}</p>
         </CartItem>
       );
     });
@@ -90,10 +104,16 @@ class ModalBlock extends Component {
     return (
       <BlockList>
         <h1>Orders cart</h1>
-        <CartList>
-          {cartList.totalCount === 0 ? <h4> Basket is empty </h4> : cartList }
-          {cartList}
-        </CartList>
+        <ShoppingCartBlock>
+          <CartList>
+            {items.totalCount === 0 ? <h4> Basket is empty </h4> : cartList }
+          </CartList>
+          {items.totalCount !== 0 ? (
+            <ShoppingCartSection>
+              <ShoppingCart />
+            </ShoppingCartSection>
+          ) : null}
+        </ShoppingCartBlock>
       </BlockList>
     );
   }

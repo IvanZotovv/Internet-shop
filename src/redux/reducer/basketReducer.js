@@ -7,7 +7,6 @@ const initialState = {
 
 
 export const basketReducer = (state = initialState, action) => {
-  // console.log(state, action);
   switch (action.type) {
     case 'ADD_ITEM_TO_CART': {
       const existedItem = state.items[action.value.id];
@@ -23,14 +22,16 @@ export const basketReducer = (state = initialState, action) => {
       };
     }
     case 'REMOVE_ITEM': {
-      const newState = state.items[action.value.id];
+      // const findKey = state.items[action.value.id];
+      // просто удаление item, каунт не трогал
+      const items = { ...state.items };
+      const { [action.value.id]: _, ...newData } = items;
+      console.log(newData);
       return {
-        ...state,
-        items: newState,
-        totalCount: state.totalCount - 1,
+        items: newData,
+        totalCount: state.totalCount,
       };
     }
-
     default:
       return state;
   }
