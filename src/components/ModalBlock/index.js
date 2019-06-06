@@ -83,6 +83,7 @@ class ModalBlock extends Component {
 
   render() {
     const { ...items } = this.props.basket;
+    console.log(items);
     const element = Object.values(items.items);
     const cartList = element.map((i) => {
       return (
@@ -106,13 +107,13 @@ class ModalBlock extends Component {
         <h1>Orders cart</h1>
         <ShoppingCartBlock>
           <CartList>
-            {items.totalCount === 0 ? <h4> Basket is empty </h4> : cartList }
+            {items.totalCount > 0 ? cartList : <h4> Basket is empty </h4>}
           </CartList>
-          {items.totalCount !== 0 ? (
+          {items.totalCount > 0 ? (
             <ShoppingCartSection>
               <ShoppingCart />
             </ShoppingCartSection>
-          ) : null}
+          ) : null }
         </ShoppingCartBlock>
       </BlockList>
     );

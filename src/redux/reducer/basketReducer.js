@@ -1,8 +1,10 @@
 /* eslint-disable jsx-a11y/href-no-hash */
 
+
 const initialState = {
   items: {},
   totalCount: 0,
+  totalPrice: 0,
 };
 
 
@@ -22,14 +24,16 @@ export const basketReducer = (state = initialState, action) => {
       };
     }
     case 'REMOVE_ITEM': {
-      // const findKey = state.items[action.value.id];
-      // просто удаление item, каунт не трогал
       const items = { ...state.items };
-      const { [action.value.id]: _, ...newData } = items;
-      console.log(newData);
+      items[action.value.id].count -= 1;
+      if (items[action.value.id].count < 1) {
+        delete items[action.value.id];
+      }
+
       return {
-        items: newData,
-        totalCount: state.totalCount,
+        ...state,
+        items,
+        totalCount: state.totalCount > 1 ? state.totalCount - 1 : null,
       };
     }
     default:
