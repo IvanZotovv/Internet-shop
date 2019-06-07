@@ -7,9 +7,13 @@ const ItemBlock = styled.div`
   display: block;
   padding: 5px;
   cursor: pointer;
+
 `;
 const ImageBlock = styled.div`
-  height: 40vh;
+`;
+const ImageBlockTitle = styled.h3`
+  padding: 0;
+  margin: 0;
 `;
 
 const Image = styled.img`
@@ -22,7 +26,7 @@ const ShopItem = ({ ...elem }) => {
   const { id, img, title } = elem.elem;
   return (
     <ItemBlock key={id}>
-      <h3>{title}</h3>
+      <ImageBlockTitle>{title}</ImageBlockTitle>
       <ImageBlock>
         <Image
           src={img}

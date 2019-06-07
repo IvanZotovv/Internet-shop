@@ -18,7 +18,7 @@ const AuthHeader = styled.div`
   justify-content: space-between;
   list-style: none;
   text-decoration: none;
-  background: rgb(224, 221, 221);
+  background: rgb(240, 247, 25);
   width: 90%;
   padding: 0;
 `;

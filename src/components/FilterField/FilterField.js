@@ -9,67 +9,27 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 20px 0 0 0;
-`;
-const InputField = styled.span`
-& {
-  position:relative;
-  font-size: 1.5em;
-  background: linear-gradient(21deg,  #454747, #c6c9c8);
-  padding: 3px;
-  display: inline-block;
-  border-radius: 9999em;
-  height: 40px;
-};
-*:not(span) {
   position: relative;
-  display: inherit;
-  border-radius: inherit;
-  margin: 5px;
-  height: 30px;
-  width: 300px;
-  border: none;
-  outline: none;
-  padding: 0 .325em;
-  z-index: 1; 
-  &:focus + span {
-    opacity: 1;
-    transform: scale(1);
-  }
-`;
-const Span = styled.span`
-  transform: scale(.993, .94); 
-  transition: transform .5s, opacity .25s;
-  opacity: 0; 
-  position:absolute;
-  z-index: 0; 
-  margin:4px; 
-  left:0;
-  top:0;
-  right:0;
-  bottom:0;
-  border-radius: inherit;
-  pointer-events: none; 
-  box-shadow: inset 0 0 0 3px #fff,
-  0 0 0 4px #fff,
-  3px -3px 30px #eaf5aa, 
-  -3px 3px 30px #b7c254;
-}
+  z-index:56345;
+  margin: auto;
 `;
 const Input = styled.input`
-  & {
-    font-family: inherit;
-    line-height:inherit;
-    color:#2e3750;
-    min-width:12em;
-  }
-  &::after {
-    content:'';
-    background: linear-gradient(21deg, #10abff, #1beabd);
-    height:3px;
-    width:100%;
-    position:absolute;
-    left:0;
-    top:0;
+  font-size: 16px;
+  border: solid 1px #dbdbdb;
+  border-radius: 3px;
+  color: #262626;
+  padding: 7px 33px;
+  border-radius: 3px;
+  color: #999;
+  cursor: text;
+  font-size: 14px;
+  font-weight: 300;
+  text-align: center;
+  background: #fafafa;
+
+  &:active,
+  &:focus {
+    text-align: left;
   }
 `;
 const Title = styled.h1`
@@ -82,10 +42,10 @@ class AddItemToBasket extends Component {
     return (
       <Container>
         <Title>Your bike</Title>
-        <InputField>
+        <div>
           <Input type="email" placeholder="Choose your bike!"></Input>
-          <Span></Span>
-        </InputField>
+          {/* <Span></Span> */}
+        </div>
         <Basket />
       </Container>
     );

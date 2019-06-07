@@ -18,9 +18,11 @@ export const basketReducer = (state = initialState, action) => {
       };
       const items = { ...state.items };
       items[action.value.id] = newItem;
+      console.log(newItem.price);
       return {
         items,
         totalCount: state.totalCount + 1,
+        // totalPrice: newItem.price + state.totalCount,
       };
     }
     case 'REMOVE_ITEM': {
@@ -29,11 +31,11 @@ export const basketReducer = (state = initialState, action) => {
       if (items[action.value.id].count < 1) {
         delete items[action.value.id];
       }
-
+      // console.log(items);
       return {
         ...state,
         items,
-        totalCount: state.totalCount > 1 ? state.totalCount - 1 : null,
+        totalCount: state.totalCount > 1 ? state.totalCount - 1 : 0,
       };
     }
     default:

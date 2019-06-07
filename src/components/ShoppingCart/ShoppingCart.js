@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+
 
 const CartItemBlock = styled.div`
   padding: 15px;
@@ -22,10 +24,26 @@ const Page = styled.p`
   padding: 0,
   margin: 0,
 `;
-const CartItemButton = styled.div`
-  border: 1px solid black;
-  padding: 5px 10px;
-  width: 90px;
+const CartItemButton = styled.button`
+  cursor: pointer;
+  background: transparent;
+  font-size: 16px;
+  border-radius: 3px;
+  color: white;
+  border: white
+  margin: 0 1em;
+  padding: 0.25em 1em;
+  transition: 0.5s all ease-out;
+  background: green
+
+  &:hover {
+    color: white;
+    background-color: ${props =>
+    (props.primary ? 'green' : 'white')};
+  color: ${props => (props.primary ? 'white' : 'green')};
+  border: ${props =>
+    (props.primary ? '2px solid white' : '2px solid green')};
+  }
 `;
 const InfoAbout = styled.div`
   height: 200px;
@@ -36,23 +54,58 @@ const CartItemButtonBlock = styled.div`
   flex-wrap: wrap;
   margin: 3px,
 `;
+const CartItemButtonClear = styled.button`
+  cursor: pointer;
+  background: transparent;
+  font-size: 16px;
+  border-radius: 3px;
+  color: ${props => (props.primary ? 'violet' : 'palevioletred')};
+  border: ${props =>
+    (props.primary ? '2px solid violet' : '2px solid palevioletred')};
+  margin: 0 1em;
+  padding: 0.25em 1em;
+  transition: 0.5s all ease-out;
 
+  &:hover {
+    color: white;
+    background-color: ${props =>
+    (props.primary ? 'violet' : 'palevioletred')};
+  }
+`;
+const mapStateToProps = (state) => {
+  return {
+    basket: state.basket,
+  };
+};
 
-export default function ShoppingCart() {
-  return (
-    <CartItemBlock>
-      <InfoAbout>
-        <h3>Shopping cart</h3>
-        <p>Total price: </p>
-      </InfoAbout>
-      <FormBlock>
-        <Page>Enter your address:</Page>
-        <Page><input /></Page>
-      </FormBlock>
-      <CartItemButtonBlock>
-        <CartItemButton>Clear basket</CartItemButton>
-        <CartItemButton>Buy</CartItemButton>
-      </CartItemButtonBlock>
-    </CartItemBlock>
-  );
+const mapDispatchToProps = (dispatch) => {
+  return {
+    // deleteItem: (item) => { dispatch(deleteCartFromData(item)); },
+  };
+};
+
+class ShoppingCart extends Component {
+  deleteAll(){
+    
+  }
+  render(){
+    return (
+      <CartItemBlock>
+        <InfoAbout>
+          <h3>Shopping cart</h3>
+          <p>Total price: </p>
+        </InfoAbout>
+        <FormBlock>
+          <Page>Enter your address:</Page>
+          <Page><input /></Page>
+        </FormBlock>
+        <CartItemButtonBlock>
+          <CartItemButtonClear onClick={this.deleteAll()}>Clear basket</CartItemButtonClear>
+          <CartItemButton>Buy</CartItemButton>
+        </CartItemButtonBlock>
+      </CartItemBlock>
+    );    
+    }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShoppingCart);

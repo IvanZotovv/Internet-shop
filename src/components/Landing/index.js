@@ -10,6 +10,7 @@ import ShopItems from './ShopItems';
 import { withFirebase } from '../Firebase';
 import { watchItemData, addCartData } from '../../redux/app-redux';
 import FilterField from '../FilterField/FilterField';
+import TextInform from '../TextInform/TextInform';
 
 
 const List = styled.ul`
@@ -21,10 +22,12 @@ const List = styled.ul`
 const Item = styled.li`
   list-style: none;
   margin: 5px;
-  background: gray;
+  background: white;
+  z-index: 23;
+  width: 45%;
+  height: 32.5%;
 `;
 const BlockList = styled.div`
-  width: 90%;
   position: relative;
   margin: auto;
 `;
@@ -39,7 +42,35 @@ const EditItemButton = styled.div`
   padding: 5px 10px;
   cursor: pointer;
 `;
+const MainContainer = styled.section`
+  width: 90%;
+  margin: auto;
+  position: relative;
+  background: grey;
+  &:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.6;
+    background-image: url('https://s23705.pcdn.co/wp-content/uploads/2017/08/Membership-9.99.png');
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    -ms-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+  }
+`;
+const Container = styled.div`
+  display: flex;
 
+`;
 
 const mapStateToProps = (state) => {
   return {
@@ -58,7 +89,6 @@ class Landing extends Component {
     super(props);
     this.props.watchItemData();
   }
-
 
 
   handleClick = item => () => {
@@ -86,13 +116,18 @@ class Landing extends Component {
     });
 
     return (
-      <BlockList>
-        <FilterField />
-        <List>
-          {/* {loading && <div>Loading ...</div>} */}
-          {li}
-        </List>
-      </BlockList>
+      <MainContainer>
+        <BlockList>
+          <FilterField />
+          <Container>
+            <List>
+              {/* {loading && <div>Loading ...</div>} */}
+              {li}
+            </List>
+            <TextInform />
+          </Container>
+        </BlockList>
+      </MainContainer>
     );
   }
 }
