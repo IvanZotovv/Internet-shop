@@ -9,15 +9,19 @@ import { connect } from 'react-redux';
 import ShopItems from './ShopItems';
 import { withFirebase } from '../Firebase';
 import { watchItemData, addCartData } from '../../redux/app-redux';
-import FilterField from '../FilterField/FilterField';
-import TextInform from '../TextInform/TextInform';
+import FilterField from './FilterField/FilterField';
+import TextInform from './TextInform/TextInform';
 
 
 const List = styled.ul`
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  padding: 0;
+  padding: -1px;
+  width: 70%;
+  height: 80vh;
+  overflow-y: scroll;
+  margin-right: -20px;
 `;
 const Item = styled.li`
   list-style: none;
@@ -25,7 +29,6 @@ const Item = styled.li`
   background: white;
   z-index: 23;
   width: 45%;
-  height: 32.5%;
 `;
 const BlockList = styled.div`
   position: relative;
@@ -44,9 +47,11 @@ const EditItemButton = styled.div`
 `;
 const MainContainer = styled.section`
   width: 90%;
+  height: 100vh;
   margin: auto;
   position: relative;
   background: grey;
+  overflow: hidden;
   &:before {
     content: ' ';
     display: block;
@@ -54,7 +59,7 @@ const MainContainer = styled.section`
     left: 0;
     top: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     z-index: 1;
     opacity: 0.6;
     background-image: url('https://s23705.pcdn.co/wp-content/uploads/2017/08/Membership-9.99.png');

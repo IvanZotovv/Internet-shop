@@ -9,3 +9,4 @@ export const PASSWORD_FORGET = '/pw-forget';
 
 export const LANDING_ITEMS = '/:id';
 export const BASKET = '/basket';
+export const CHECKOUTBLOCK = '/checkout';

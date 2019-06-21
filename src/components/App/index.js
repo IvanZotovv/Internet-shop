@@ -14,8 +14,15 @@ import { watchItemData } from '../../redux/app-redux';
 
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
-import LandingItems from '../LandingItems/LandingItems';
-import ModalBlock from '../ModalBlock';
+import LandingItems from '../Landing/LandingItems/LandingItems';
+import ModalBlock from '../Landing/ModalBlock';
+import CheckoutBlock from '../Landing/CheckoutBlock/CheckoutBlock';
+import styled from 'styled-components';
+
+
+const MainBlock = styled.section`
+  height: 100vh;
+`;
 
 const mapStateToProps = (state) => {
   return {
@@ -30,7 +37,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const App = () => (
   <Router>
-    <div>
+    <MainBlock>
       <Navigation />
       <Switch>
         <Route exact path={ROUTES.LANDING} component={LandingPage} />
@@ -43,10 +50,11 @@ const App = () => (
         <Route path={ROUTES.HOME} component={HomePage} />
         <Route path={ROUTES.ADMIN} component={AdminPage} />
         <Route path={ROUTES.BASKET} component={ModalBlock} />
+        <Route path={ROUTES.CHECKOUTBLOCK} component={CheckoutBlock} />
         <Route path={ROUTES.LANDING_ITEMS} component={id => <LandingItems item={id} />} />
       </Switch>
 
-    </div>
+    </MainBlock>
   </Router>
 );
 

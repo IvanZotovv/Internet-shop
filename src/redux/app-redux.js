@@ -1,9 +1,11 @@
+/* eslint-disable default-case */
 /* eslint-disable jsx-a11y/href-no-hash */
 
 import { createStore, applyMiddleware } from 'redux';
 import thinkMiddleware from 'redux-thunk';
 import combineReducers from './reducer/index';
 import fb from '../components/Firebase/fb';
+import { firebaseReducer } from 'react-redux-firebase';
 
 // Store
 
@@ -35,15 +37,25 @@ export const deleteCartFromData = (removeItem) => {
   };
 };
 
-// const getTotalCost = (ItemToBasket) => {
-//   return {
-//     type: 'TOTAL_COAST',
-//     value: ItemToBasket.reduce((result, item) => item.qty * item.price + result, 0),
-//   };
-// };
+export const adminField = (item) => {
+  return {
+    type: 'CREATE_ITEM',
+    value: item,
+  };
+};
 
-// const totalPrice = item => (dispatch) => {
-//   dispatch(getTotalCost(item));
+export const adminFieldError = (err) => {
+  return {
+    type: 'CREATE_ITEM',
+    value: err,
+  };
+};
+
+// export const uploadFiles = (img) => {
+//   return {
+//     type: 'UPLOAD_IMAGE',
+//     value: img,
+//   };
 // };
 
 const addItemToCart = item => (dispatch) => {
@@ -65,4 +77,28 @@ const watchItemData = () => (dispatch) => {
     });
 };
 
-export { watchItemData, addItemToCart, deleteItem };
+
+const createItem = item => (dispatch) => {
+  console.log(item);
+  // console.log(uploadImage(item.img));
+
+  fb.firestore()
+    .collection('items')
+    .add({
+      ...item,
+      img: item.img,
+      title: item.title,
+      price: item.price,
+      description: item.description,
+    })
+    .then(() => {
+      dispatch(adminField(item));
+    }).catch((err) => {
+      dispatch(adminFieldError(err));
+    });
+};
+
+
+export {
+  watchItemData, addItemToCart, deleteItem, createItem,
+};

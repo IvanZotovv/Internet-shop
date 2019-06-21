@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "antd": "^3.19.1",
+    "antd": "^3.19.5",
+    "antd-form-redux": "^3.0.28",
     "eslint-config-airbnb": "^17.1.0",
     "firebase": "^5.11.1",
     "firebase-admin": "7.3.0",
@@ -11,6 +12,7 @@
     "lodash": "^4.17.11",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
+    "react-form-antd": "0.0.11",
     "react-redux": "^7.0.3",
     "react-redux-firebase": "^2.2.6",
     "react-router": "^5.0.0",

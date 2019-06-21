@@ -15,27 +15,34 @@ export const basketReducer = (state = initialState, action) => {
       const newItem = {
         ...action.value,
         count: existedItem ? existedItem.count + 1 : 1,
+        subtotal: existedItem ? parseFloat(action.value.price) * existedItem.count + parseFloat(action.value.price) : action.value.price,
       };
       const items = { ...state.items };
       items[action.value.id] = newItem;
-      console.log(newItem.price);
       return {
         items,
         totalCount: state.totalCount + 1,
-        // totalPrice: newItem.price + state.totalCount,
+        totalPrice: state.totalPrice + parseFloat(newItem.price),
       };
     }
     case 'REMOVE_ITEM': {
       const items = { ...state.items };
-      items[action.value.id].count -= 1;
-      if (items[action.value.id].count < 1) {
+      const matchId = items[action.value.id];
+      matchId.count -= 1;
+      if (matchId.count < 1) {
         delete items[action.value.id];
+      } else {
+        const removeItem = {
+          ...action.value,
+          subtotal: parseFloat(matchId.subtotal) - parseFloat(matchId.price),
+        };
+        items[action.value.id] = removeItem;
       }
-      // console.log(items);
       return {
         ...state,
         items,
-        totalCount: state.totalCount > 1 ? state.totalCount - 1 : 0,
+        totalCount: state.totalCount > 0 ? state.totalCount - 1 : 1,
+        totalPrice: matchId.price ? state.totalPrice - parseFloat(matchId.price) : 0,
       };
     }
     default:

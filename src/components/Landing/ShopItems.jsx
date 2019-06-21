@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/href-no-hash */
 import React from 'react';
 import styled from 'styled-components';
-// import AddItemToBasket from '../Basket/AddItemToBasket';
 
 const ItemBlock = styled.div`
   display: block;
@@ -24,6 +23,7 @@ const Image = styled.img`
 
 const ShopItem = ({ ...elem }) => {
   const { id, img, title } = elem.elem;
+  // console.log(img);
   return (
     <ItemBlock key={id}>
       <ImageBlockTitle>{title}</ImageBlockTitle>
